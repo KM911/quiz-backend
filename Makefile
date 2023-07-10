@@ -1,4 +1,4 @@
-Name = cli
+Name = quiz
 
 .PHONY: build release clean run test pprof
 
@@ -10,7 +10,7 @@ test:
 	go test -v ./...
 
 build:
-	go build -o $(Name)
+	go build -ldflags "-s -w"
 
 release:
 	go build -ldflags "-s -w" -o $(Name) && upx -9 $(Name)

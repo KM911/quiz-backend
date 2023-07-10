@@ -1,17 +1,16 @@
 package router
 
 import (
-	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"quiz/service"
 )
 
 func InitRouter(app *fiber.App) {
-	app.Post("/hello", func(c *fiber.Ctx) error {
-		fmt.Println(string(c.Body()))
-		return c.SendString(string(c.Body()))
+	app.Get("/hello", func(c *fiber.Ctx) error {
+		return c.SendString("Hello, World 👋!")
 	})
-	apiGroup := app.Group("/api")
-	apiGroup.Get("/hello", func(c *fiber.Ctx) error {
-		return c.SendString("Api group Hello, World!")
-	})
+	quizGroup := app.Group("/quiz")
+
+	quizGroup.Get("/choice/num", service.GetChoiceNum)
+	quizGroup.Get("/choice/id/:id", service.GetChoiceById)
 }

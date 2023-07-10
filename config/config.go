@@ -10,12 +10,15 @@ var (
 	ExecutePath      string
 	ConfigFolderPath string
 	ConfigFilePath   string
+	DebugRootPath    string
 )
 
 func LoadConfig() {
+	DebugRootPath = "D:\\GITHUB\\KM911\\quiz-backend"
 	setBasicEnv()
 	checkEnv()
 	setDebugEnv()
+	//recover()
 }
 
 func setBasicEnv() {
@@ -31,7 +34,7 @@ func setBasicEnv() {
 func checkEnv() {
 	if !isEnvReady() {
 		fixEnv()
-		panic("config.json not exist")
+		//panic("config.json not exist")
 	}
 	viper.ReadInConfig()
 }

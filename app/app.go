@@ -1,8 +1,8 @@
 package app
 
 import (
-	"fiber_demo/router"
 	"github.com/gofiber/fiber/v2"
+	"quiz/router"
 )
 
 func Start() {
